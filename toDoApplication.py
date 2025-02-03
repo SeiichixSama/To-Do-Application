@@ -1,4 +1,24 @@
+def add_task(tasks, task):
+   tasks.append(userInput)
+   print(f"Task added: {task}")
 
+def view_task(tasks):
+   print("Your tasks:")
+   if tasks:
+    for i, task in enumerate(tasks, start=1):
+      print(f"{i}, {task}")
+   else:
+      print("No tasks available")
+
+def del_tasks(tasks, task):
+   if task in tasks:
+      tasks.remove(task)
+   else:
+      print("No tasks to delete.")
+
+def quit_app():
+  print("Good bye!")
+  exit()
 
 tasks = []
 
@@ -8,31 +28,24 @@ while True:
     
          if option == "add task":
            userInput  = input('What task would you like to add? \n')
-           tasks.append(userInput)
+           add_task(tasks, userInput)
                  
          elif option == "view task":
           if tasks:
-            print("Your tasks:")
-            for i, task in enumerate(tasks, start=1):
-                print(f"{i}. {task}")
-          else:
-            print("No tasks available.")
+             view_task(tasks)
       
          elif option == "delete task":
           if tasks:
             userInput = input('What task would you like to delete? \n')
-            if userInput in tasks:
-                tasks.remove(userInput)
-                print(f"Task deleted: {userInput}")
-            else:
-                print("Task not found.")
+            del_tasks(tasks, userInput)
           else:
-            print("No tasks to delete.")
+             print("No tasks to delete")
+
+          
     
          elif option == "quit the application":
-          print("Good bye!")
-          break
-
+          quit_app()
+        
          else:
            print("Invalid input. Please try again.")
 
@@ -46,4 +59,4 @@ while True:
         print(f"An unexpected error occured: {E}")
 
     finally:
-        print("This is the end of this interaction. Taking you back to the main menu \n ")
+        exit()
